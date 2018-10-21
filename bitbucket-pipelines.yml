@@ -41,6 +41,6 @@ pipelines:
             - npm install
             - npm run build
             - cd dist/ngx-endpoint
-            - mv ../../npm-release-config .npmrc
+            - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
             - npm publish $(npm pack -s)
 
