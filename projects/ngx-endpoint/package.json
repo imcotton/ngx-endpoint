@@ -1,0 +1,9 @@
+{
+  "name": "ngx-endpoint",
+  "version": "0.0.1",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": ">=4.0.0",
+    "@angular/core": ">=4.0.0"
+  }
+}
