@@ -41,5 +41,6 @@ pipelines:
             - npm install
             - npm run build
             - cd dist/ngx-endpoint
-            - npm publish $(npm pack -s) --dry-run
+            - mv ../../npm-release-config .npmrc
+            - npm publish $(npm pack -s)
 
