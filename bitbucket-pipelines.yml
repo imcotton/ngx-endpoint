@@ -2,20 +2,20 @@ image: node:10-alpine
 
 pipelines:
 
-  default:
-
-    - step:
-        name: Sanity Test
-        caches:
-          - node
-        script:
-          - npm install
-          # - npm test
-          - npm run build
-
-
-
   branches:
+
+    '{master,feature/*}':
+
+      - step:
+          name: Sanity Test
+          caches:
+            - node
+          script:
+            - npm install
+            # - npm test
+            - npm run build
+
+
 
     release/*:
 
@@ -41,6 +41,7 @@ pipelines:
             - npm install
             - npm run build
             - cd dist/ngx-endpoint
+            - cp ../../README.md .
             - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
             - npm publish $(npm pack -s)
 
