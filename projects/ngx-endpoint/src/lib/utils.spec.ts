@@ -74,6 +74,7 @@ describe(suitName, function () {
             expect(mergePath('/api', '/user')).toBe('/api/user');
             expect(mergePath('/api/', '/user')).toBe('/api/user');
             expect(mergePath('/api', '//user')).toBe('/api/user');
+            expect(mergePath('///api//', '//user///')).toBe('/api/user/');
 
         });
 
