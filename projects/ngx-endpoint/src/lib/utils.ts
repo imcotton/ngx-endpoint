@@ -26,6 +26,7 @@ export function mergePath (head: string, path: string) {
 
     return url
         .replace(/\/+/g, '/')
+        .replace('http:/', 'http://')
         .replace('https:/', 'https://')
     ;
 }

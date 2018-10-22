@@ -77,6 +77,15 @@ describe(suitName, function () {
 
         });
 
+        it('normalize http', function () {
+
+            expect(mergePath('http://foo', '/bar')).toBe('http://foo/bar');
+            expect(mergePath('http://foo', 'bar')).toBe('http://foo/bar');
+            expect(mergePath('http://foo/', '/bar')).toBe('http://foo/bar');
+            expect(mergePath('http://foo/', '//bar')).toBe('http://foo/bar');
+
+        });
+
         it('normalize https', function () {
 
             expect(mergePath('https://foo', '/bar')).toBe('https://foo/bar');
