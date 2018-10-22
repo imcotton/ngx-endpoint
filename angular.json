@@ -17,11 +17,8 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "projects/ngx-endpoint/src/test.ts",
-            "tsConfig": "projects/ngx-endpoint/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-endpoint/karma.conf.js"
           }
         },
         "lint": {
