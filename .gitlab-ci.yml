@@ -23,6 +23,7 @@ lint_and_spec:
   only:
     - master
     - /^feature\/.+$/
+  coverage: '/^All files[^|]*\|[^|]*\s+([\d\.]+)/'
   script:
     - npm install
     - npm test -- --ci --coverage
