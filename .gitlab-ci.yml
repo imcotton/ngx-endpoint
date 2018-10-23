@@ -77,7 +77,8 @@ npm_publish:
     - npm install
     - npm run build
     - cd dist/ngx-endpoint
-    - cp ../../{README,CHANGELOG}.md .
+    - cp ../../README.md .
+    - cp ../../CHANGELOG.md .
     - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
     - npm publish $(npm pack -s)
   artifacts:
