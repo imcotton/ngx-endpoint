@@ -28,6 +28,7 @@ lint_and_spec:
   coverage: '/^All files[^|]*\|[^|]*\s+([\d\.]+)/'
   script:
     - npm install
+    - npm run -s lint
     - npm test -- --ci --coverage
 
 
