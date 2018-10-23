@@ -31,13 +31,13 @@ import { BaseEndpointService } from 'ngx-endpoint';
 
 
 @Injectable({
-    providedIn: 'root',          // <---- only for Angular v6+, remove it in v4 or v5
+    providedIn: 'root',          // <---- only for Angular v6+, remove it on v4 or v5
 })
 export class EndpointService extends BaseEndpointService {
 
     readonly api = this.booking('/api/v1');   // <---- register it as API root
 
-    readonly gitHub = this.booking('https://api.github.com');   // <---- another one
+    readonly gitLab = this.booking('https://gitlab.example.com/api/v4');   // <---- another one
 
 
 
@@ -73,11 +73,11 @@ import { EndpointService } from 'app/endpoint-service';
     ],
     providers: [
 
-        // EndpointService,   // <---- uncomment this if in Angular v4 or v5
+        // EndpointService,   // <---- uncomment this if on Angular v4 or v5
 
         {
             provide: BaseEndpointService,
-            useExisting: EndpointService,   // <---- tell Angular to use this one
+            useExisting: EndpointService,
         },
 
     ],
@@ -112,9 +112,7 @@ export class MyService {
 
 
     getInfo () {
-        return this.http
-            .get(this.api.to('/info'))   // <---- see, no api prefix assembling anymore
-        ;
+        return this.http.get(this.api.to('/info'));   // <---- auto prefixed
     }
 
     setOAuth (token: string) {
