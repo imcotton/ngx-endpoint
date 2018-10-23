@@ -9,7 +9,6 @@ cache:
 
 stages:
   - test
-  - build
   - shrinkwrap
   - deploy
 
@@ -34,7 +33,7 @@ lint_and_spec:
 
 
 raw_build:
-  stage: build
+  stage: test
   tags:
     - gitlab-org
   only:
