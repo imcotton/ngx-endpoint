@@ -19,6 +19,9 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "roots": [
+              "projects"
+            ]
           }
         },
         "lint": {
