@@ -77,7 +77,7 @@ import { EndpointService } from 'app/endpoint-service';
 
         {
             provide: BaseEndpointService,
-            useExisting: EndpointService   // <---- tell Angular to use this one
+            useExisting: EndpointService,   // <---- tell Angular to use this one
         },
 
     ],
