@@ -65,6 +65,7 @@ npm_publish:
     - /^v\/.+$/
   except:
       - branches
+  cache: {}
   script:
     - npm install
     - npm run build
@@ -75,5 +76,5 @@ npm_publish:
     - npm publish $(npm pack -s)
   artifacts:
     paths:
-      - "*.tgz"
+      - dist/ngx-endpoint/*.tgz
 
