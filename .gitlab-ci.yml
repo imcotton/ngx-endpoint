@@ -25,7 +25,7 @@ lint_and_spec:
     - /^feature\/.+$/
   script:
     - npm install
-    - npm test
+    - npm test -- --ci --coverage
 
 
 
