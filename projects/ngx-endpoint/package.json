@@ -1,7 +1,18 @@
 {
   "name": "ngx-endpoint",
   "version": "0.1.0",
+  "description": "Simplify Angular HTTP request API management",
+  "author": "Cotton Hou <himcotton@gmail.com>",
+  "repository": "gitlab:imcotton/ngx-endpoint",
+  "homepage": "https://gitlab.com/imcotton/ngx-endpoint#readme",
+  "bugs": {
+    "url": "https://gitlab.com/imcotton/ngx-endpoint/issues"
+  },
   "license": "MIT",
+  "keywords": [
+    "Angular",
+    "interceptor"
+  ],
   "peerDependencies": {
     "@angular/common": ">=4.0.0",
     "@angular/core": ">=4.0.0"
