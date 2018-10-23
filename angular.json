@@ -19,6 +19,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "collectCoverageFrom": "projects/**/src/lib/*.{ts,tsx}",
             "roots": [
               "projects"
             ]
