@@ -21,7 +21,7 @@ stages:
 lint_and_spec:
   stage: test
   tags:
-    - docker
+    - gitlab-org
   only:
     - master
     - /^feature\/.+$/
@@ -35,7 +35,7 @@ lint_and_spec:
 raw_build:
   stage: build
   tags:
-    - docker
+    - gitlab-org
   only:
     - master
     - /^feature\/.+$/
@@ -48,7 +48,7 @@ raw_build:
 shrinkwrap_build:
   stage: shrinkwrap
   tags:
-    - docker
+    - gitlab-org
   only:
     - /^release\/.+$/
   except:
@@ -67,7 +67,7 @@ shrinkwrap_build:
 npm_publish:
   stage: deploy
   tags:
-    - docker
+    - gitlab-org
   only:
     - /^v\/.+$/
   except:
