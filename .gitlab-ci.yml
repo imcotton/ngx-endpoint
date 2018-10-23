@@ -20,6 +20,8 @@ stages:
 
 lint_and_spec:
   stage: test
+  tags:
+    - docker
   only:
     - master
     - /^feature\/.+$/
@@ -32,6 +34,8 @@ lint_and_spec:
 
 raw_build:
   stage: build
+  tags:
+    - docker
   only:
     - master
     - /^feature\/.+$/
@@ -43,6 +47,8 @@ raw_build:
 
 shrinkwrap_build:
   stage: shrinkwrap
+  tags:
+    - docker
   only:
     - /^release\/.+$/
   except:
