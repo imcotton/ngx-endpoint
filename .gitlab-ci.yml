@@ -82,7 +82,8 @@ npm_publish:
     - cp ../../CHANGELOG.md .
     - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
     - npm publish $(npm pack -s)
+    - mv *.tgz ../../
   artifacts:
     paths:
-      - dist/ngx-endpoint/*.tgz
+      - '*.tgz'
 
