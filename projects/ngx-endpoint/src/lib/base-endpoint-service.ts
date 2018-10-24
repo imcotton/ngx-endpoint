@@ -61,10 +61,14 @@ export abstract class BaseEndpointService {
     }
 
 
-
     protected abstract onInit (): void;
+
     // tslint:disable-next-line:member-ordering
-    private readonly asyncInit = Promise.resolve().then(() => this.onInit());
+    private readonly asyncInit = Promise.resolve().then(() => {
+        if (this.asyncInit && this.onInit) {
+            this.onInit();
+        }
+    });
 
 }
 
