@@ -1,17 +1,20 @@
 image: node:10-alpine
 
 
+
+
+
 cache:
   key: "$CI_COMMIT_REF_NAME"
   paths:
     - node_modules/
 
 
+
+
+
 stages:
   - test
-  - shrinkwrap
-  - deploy
-
 
 
 
@@ -32,6 +35,8 @@ lint_and_spec:
 
 
 
+
+
 raw_build:
   stage: test
   tags:
@@ -45,8 +50,9 @@ raw_build:
 
 
 
+
+
 shrinkwrap_build:
-  stage: shrinkwrap
   tags:
     - gitlab-org
   only:
@@ -64,14 +70,15 @@ shrinkwrap_build:
 
 
 
+
+
 npm_publish:
-  stage: deploy
   tags:
     - gitlab-org
   only:
     - /^v\/.+$/
   except:
-      - branches
+    - branches
   cache: {}
   script:
     - npm install
