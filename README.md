@@ -35,7 +35,7 @@ import { BaseEndpointService } from 'ngx-endpoint';
 })
 export class EndpointService extends BaseEndpointService {
 
-  readonly api = this.booking('/api/v1');   // <---- register it as API root
+  readonly api = this.booking('/api');   // <---- register as prefix
 
   readonly gitLab = this.booking('https://gitlab.com/api/v4');   // <---- another one
 
@@ -44,7 +44,7 @@ export class EndpointService extends BaseEndpointService {
   protected onInit () {
 
     this.api.headers.add({
-        'X-Powered-By': 'NgxEndpoint',    // <---- leave small ink on each call
+      'X-Powered-By': 'NgxEndpoint',    // <---- leaves small ink on future calling
     });
 
   }
@@ -129,7 +129,7 @@ export class MyService {
 
 
 
-### **(4)** that's it, run the App, checkout the result.
+### that's it.
 
 
 
