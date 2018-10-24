@@ -16,6 +16,12 @@
       "pre-commit": "npm run -s lint && npm test"
     }
   },
+  "jest": {
+    "reporters": [
+      "default",
+      "jest-junit"
+    ]
+  },
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -44,6 +50,7 @@
     "codelyzer": "~4.5.0",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
+    "jest-junit": "^5.2.0",
     "ng-packagr": "^4.1.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",

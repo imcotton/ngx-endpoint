@@ -32,6 +32,12 @@ lint_and_spec:
     - npm install
     - npm run -s lint
     - npm test -- --ci --coverage
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - junit.xml
+    reports:
+      junit: junit.xml
 
 
 
@@ -64,7 +70,7 @@ shrinkwrap_build:
     - npm install
     - npm shrinkwrap
   artifacts:
-    expire_in: 1 week
+    expire_in: 3 weeks
     paths:
       - npm-shrinkwrap.json
 
