@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "ms-vscode.vscode-typescript-tslint-plugin",
+        "Angular.ng-template",
+        "EditorConfig.editorconfig",
+        "oderwat.indent-rainbow",
+        "Orta.vscode-jest",
+        "CoenraadS.bracket-pair-colorizer"
+    ]
+}
+
