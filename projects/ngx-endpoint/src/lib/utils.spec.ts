@@ -158,6 +158,16 @@ describe(suitName, function () {
             expect(store.clone()).toEqual(expected);
         });
 
+        test('add only newest', function () {
+
+            const expected = { foo: 'bar' };
+
+            store.add({ abc: '123' });
+            store.add(expected, false);
+
+            expect(store.clone()).toEqual(expected);
+        });
+
         test('add same key', function () {
 
             const expected = { foo: 'bar' };
@@ -175,22 +185,6 @@ describe(suitName, function () {
             store.add(expected);
 
             expect(store.clone()).not.toBe(expected);
-        });
-
-    });
-
-});
-
-
-
-
-
-describe(suitName, function () {
-
-    xdescribe('HeaderStore', function () {
-
-        it('init', function  () {
-            // TBD
         });
 
     });

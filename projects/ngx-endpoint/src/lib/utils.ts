@@ -1,9 +1,3 @@
-import { HttpHeaders } from '@angular/common/http';
-
-
-
-
-
 export function not (value: any) {
     return !value;
 }
@@ -78,41 +72,5 @@ export function HashStore (store: Record<string, string> = {}) {
         store = append ? { ...store, ...obj } : { ...obj };
     }
 
-}
-
-
-
-
-
-export type IHeaderStore = ReturnType<typeof HeaderStore>;
-
-export function HeaderStore (store: HttpHeaders = new HttpHeaders()) {
-
-    type Value = string | string[];
-
-    const wrapper = Object.freeze({
-
-        clone () {
-            return store.append('THIS-IS-HACK', '');
-        },
-
-        append (name: string, value: Value) {
-            store = store.append(name, value);
-            return wrapper;
-        },
-
-        set (name: string, value: Value) {
-            store = store.set(name, value);
-            return wrapper;
-        },
-
-        delete (name: string, value?: Value) {
-            store = store.delete(name, value);
-            return wrapper;
-        },
-
-    });
-
-    return wrapper;
 }
 
