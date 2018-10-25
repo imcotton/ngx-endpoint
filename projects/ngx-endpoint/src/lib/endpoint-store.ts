@@ -14,6 +14,8 @@ export interface Entry {
 
 
 
+export type IEndpointStore = ReturnType<typeof EndpointStore>;
+
 export function EndpointStore () {
 
     const store = [] as Entry[];
