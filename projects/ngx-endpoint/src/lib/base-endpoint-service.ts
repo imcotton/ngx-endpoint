@@ -38,9 +38,9 @@ export abstract class BaseEndpointService {
 
             to: endpoint.to,
 
-            set: Object.freeze({
+            auth: Object.freeze({
                 JWT: setBearer,
-                OAuth: setBearer,
+                OAuth2: setBearer,
                 basic: setBasic,
             }),
 

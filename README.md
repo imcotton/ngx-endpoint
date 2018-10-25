@@ -113,15 +113,15 @@ export class MyService {
   }
 
   setOAuth (token: string) {
-    this.api.set.OAuth(token);   // <---- assign OAuth2 token
+    this.api.auth.OAuth2(token);   // <---- assign OAuth2 token
   }
 
   setJWT (token: string) {
-    this.api.set.JWT(token);   // <---- assign JWT token
+    this.api.auth.JWT(token);   // <---- assign JWT token
   }
 
   setBasic (user: string, pass: string) {
-    this.api.set.basic(user, pass);   // <---- assign Basic Auth credentials
+    this.api.auth.basic(user, pass);   // <---- assign Basic Auth credentials
   }
 
 }
