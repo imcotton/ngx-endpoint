@@ -60,8 +60,6 @@ shrinkwrap-build:
   stage: pre-release
   only:
     - /^release\/.+$/
-  except:
-    - tags
   cache: {}
   script:
     - npm install
