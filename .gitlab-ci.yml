@@ -15,18 +15,18 @@ cache:
 
 stages:
   - test
+  - pre-release
+  - release
 
 
 
 
 
-lint_and_spec:
+lint-and-spec:
   stage: test
-  tags:
-    - gitlab-org
   only:
     - master
-    - /^feature\/.+$/
+    - /^(feature|release|v)\/.+$/
   coverage: '/^All files[^|]*\|[^|]*\s+([\d\.]+)/'
   script:
     - npm install
@@ -43,13 +43,11 @@ lint_and_spec:
 
 
 
-raw_build:
+raw-build:
   stage: test
-  tags:
-    - gitlab-org
   only:
     - master
-    - /^feature\/.+$/
+    - /^(feature|release|v)\/.+$/
   script:
     - npm install
     - npm run build
@@ -58,9 +56,8 @@ raw_build:
 
 
 
-shrinkwrap_build:
-  tags:
-    - gitlab-org
+shrinkwrap-build:
+  stage: pre-release
   only:
     - /^release\/.+$/
   except:
@@ -78,16 +75,17 @@ shrinkwrap_build:
 
 
 
-npm_publish:
-  tags:
-    - gitlab-org
+npm-publish:
+  stage: release
   only:
     - /^v\/.+$/
   except:
     - branches
+  dependencies:
+    - shrinkwrap-build
   cache: {}
   script:
-    - npm install
+    - npm ci
     - npm run build
     - cd dist/ngx-endpoint
     - cp ../../LICENSE .
