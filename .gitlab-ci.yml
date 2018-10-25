@@ -34,8 +34,6 @@ lint-and-spec:
     - npm test -- --ci --coverage
   artifacts:
     expire_in: 1 week
-    paths:
-      - junit.xml
     reports:
       junit: junit.xml
 
