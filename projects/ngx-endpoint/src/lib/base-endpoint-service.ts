@@ -65,9 +65,7 @@ export abstract class BaseEndpointService {
 
     // tslint:disable-next-line:member-ordering
     private readonly asyncInit = Promise.resolve().then(() => {
-        if (this.asyncInit && this.onInit) {
-            this.onInit();
-        }
+        this.asyncInit.then(() => this.onInit());
     });
 
 }
