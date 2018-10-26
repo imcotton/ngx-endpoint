@@ -109,13 +109,13 @@ describe(suitName, function () {
     describe('headerGen', function () {
 
         test('Bearer', function () {
-            expect(headerGen.bearer('123')).toEqual({ Authorization: 'Bearer 123'});
-            expect(headerGen.bearer('foo')).toEqual({ Authorization: 'Bearer foo'});
+            expect(headerGen.bearer('123')).toEqual({ Authorization: 'Bearer 123' });
+            expect(headerGen.bearer('foo')).toEqual({ Authorization: 'Bearer foo' });
         });
 
         test('Basic', function () {
-            expect(headerGen.basic('123')).toEqual({ Authorization: 'Basic 123'});
-            expect(headerGen.basic('foo')).toEqual({ Authorization: 'Basic foo'});
+            expect(headerGen.basic('123')).toEqual({ Authorization: 'Basic 123' });
+            expect(headerGen.basic('foo')).toEqual({ Authorization: 'Basic foo' });
         });
 
     });
