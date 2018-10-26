@@ -93,5 +93,6 @@ npm-publish:
     - mv *.tgz ../../
   artifacts:
     paths:
+      - npm-shrinkwrap.json
       - '*.tgz'
 
