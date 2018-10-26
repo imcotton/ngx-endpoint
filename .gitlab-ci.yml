@@ -82,17 +82,9 @@ npm-publish:
     - shrinkwrap-build
   cache: {}
   script:
-    - npm ci
-    - npm run build
-    - cd dist/ngx-endpoint
-    - cp ../../LICENSE .
-    - cp ../../README.md .
-    - cp ../../CHANGELOG.md .
-    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-    - npm publish $(npm pack -s)
-    - mv *.tgz ../../
+    - sh ./dev/publish.sh
   artifacts:
     paths:
       - npm-shrinkwrap.json
-      - '*.tgz'
+      - ngx-endpoint-*.tgz
 
