@@ -58,7 +58,7 @@ raw-build:
 shrinkwrap-build:
   stage: pre-release
   only:
-    - /^release\/.+$/
+    - /^(release|v)\/.+$/
   cache: {}
   script:
     - npm install
