@@ -1,3 +1,13 @@
+<a name="0.2.1"></a>
+## 0.2.1 (2018-10-27)
+
+- overall unit test coverage up to 100%
+- enrich tslint rules
+
+
+
+
+
 <a name="0.2.0"></a>
 ## 0.2.0 (2018-10-25)
 
