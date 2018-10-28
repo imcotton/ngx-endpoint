@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/ngx-endpoint.svg)](https://www.npmjs.com/package/ngx-endpoint)
+[![npm version](https://badgen.net/npm/v/ngx-endpoint)](https://www.npmjs.com/package/ngx-endpoint)
 [![pipeline status](https://gitlab.com/imcotton/ngx-endpoint/badges/master/pipeline.svg)](https://gitlab.com/imcotton/ngx-endpoint/pipelines?scope=branches)
 [![coverage report](https://gitlab.com/imcotton/ngx-endpoint/badges/master/coverage.svg)](https://gitlab.com/imcotton/ngx-endpoint/-/jobs?scope=finished)
 
