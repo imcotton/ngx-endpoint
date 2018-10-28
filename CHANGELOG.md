@@ -1,3 +1,13 @@
+<a name="0.2.2"></a>
+## 0.2.2 (2018-10-29)
+
+- main repo migrate to GitHub
+- CI / CD hooked on GitLab
+
+
+
+
+
 <a name="0.2.1"></a>
 ## 0.2.1 (2018-10-27)
 
