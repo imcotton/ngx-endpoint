@@ -3,10 +3,10 @@
   "version": "0.2.1",
   "description": "Simplify Angular HTTP request API management",
   "author": "Cotton Hou <himcotton@gmail.com>",
-  "repository": "gitlab:imcotton/ngx-endpoint",
-  "homepage": "https://gitlab.com/imcotton/ngx-endpoint#readme",
+  "repository": "github:imcotton/ngx-endpoint",
+  "homepage": "https://github.com/imcotton/ngx-endpoint#readme",
   "bugs": {
-    "url": "https://gitlab.com/imcotton/ngx-endpoint/issues"
+    "url": "https://github.com/imcotton/ngx-endpoint/issues"
   },
   "license": "MIT",
   "keywords": [
