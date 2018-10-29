@@ -2,7 +2,7 @@
 
 set -eu
 
-npm ci
+npm install
 npm run build
 
 cd dist/ngx-endpoint
