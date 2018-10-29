@@ -16,7 +16,6 @@ cache:
 stages:
   - test
   - scan
-  - pre-release
   - release
 
 
@@ -68,23 +67,6 @@ sonar-scanner:
 
 
 
-shrinkwrap-build:
-  stage: pre-release
-  only:
-    - /^(release|v)\/.+$/
-  cache: {}
-  script:
-    - npm install
-    - npm shrinkwrap
-  artifacts:
-    expire_in: 3 weeks
-    paths:
-      - npm-shrinkwrap.json
-
-
-
-
-
 npm-publish:
   stage: release
   only:
@@ -98,6 +80,7 @@ npm-publish:
     NPM_DIST_TAG: next
   script:
     - sh ./dev/publish.sh
+    - npm shrinkwrap
   artifacts:
     paths:
       - npm-shrinkwrap.json
