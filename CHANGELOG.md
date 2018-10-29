@@ -1,3 +1,13 @@
+<a name="0.3.1"></a>
+## 0.3.1 (2018-10-30)
+
+- upgrade @angular-builders/jest
+- tweak CI config
+
+
+
+
+
 <a name="0.3.0"></a>
 ## 0.3.0 (2018-10-29)
 
