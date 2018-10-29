@@ -1,3 +1,14 @@
+<a name="0.3.0"></a>
+## 0.3.0 (2018-10-29)
+
+- SonarCloud integration
+- move spec files into standalone folder
+- add rxjs into peerDependencies
+
+
+
+
+
 <a name="0.2.2"></a>
 ## 0.2.2 (2018-10-29)
 
