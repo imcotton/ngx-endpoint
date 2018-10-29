@@ -62,7 +62,7 @@ sonar-scanner:
   script:
     - npx sonarqube-scanner
       -Dsonar.login=$SONARCLOUD_TOKEN
-      -Dsonar.projectVersion=$(npm run -s version)
+      -Dsonar.projectVersion=$(npm run -s version)-${CI_COMMIT_SHA:0:6}
 
 
 
