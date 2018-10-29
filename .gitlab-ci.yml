@@ -15,6 +15,7 @@ cache:
 
 stages:
   - test
+  - scan
   - pre-release
   - release
 
@@ -46,6 +47,22 @@ raw-build:
   script:
     - npm install
     - npm run build
+
+
+
+
+
+sonar-scanner:
+  image: node:10-stretch
+  stage: scan
+  dependencies:
+    - lint-and-spec
+  only:
+    - master
+  script:
+    - npx sonarqube-scanner
+      -Dsonar.login=$SONARCLOUD_TOKEN
+      -Dsonar.projectVersion=$(npm run -s version)
 
 
 
