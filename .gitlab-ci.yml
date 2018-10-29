@@ -73,8 +73,6 @@ npm-publish:
     - /^v\/.+$/
   except:
     - branches
-  dependencies:
-    - shrinkwrap-build
   cache: {}
   variables:
     NPM_DIST_TAG: next
