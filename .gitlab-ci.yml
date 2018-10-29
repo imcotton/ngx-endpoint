@@ -108,12 +108,13 @@ npm-publish:
 
 
 npm-tag-latest:
-  # only:
-  #   - /^v\/.+$/
-  # except:
-  #   - branches
+  stage: release
+  only:
+    - /^v\/.+$/
+  except:
+    - branches
   when: manual
   script:
     - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-    - npm dist-tag add ngx-endpoint@$NPM_LATEST latest
+    - npm dist-tag add ngx-endpoint@$(npm run -s version) latest
 
