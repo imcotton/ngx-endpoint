@@ -8,6 +8,7 @@
     "test.watch": "npm run test -- --watch",
     "lint": "ng lint --type-check",
     "lint.fix": "npm run -s lint -- --fix",
+    "version": "node -e \"console.log(require('./projects/ngx-endpoint/package.json').version)\"",
     "e2e": "ng e2e",
     "ng": "ng"
   },
