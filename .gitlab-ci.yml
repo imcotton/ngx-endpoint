@@ -57,12 +57,11 @@ sonar-scanner:
   stage: scan
   dependencies:
     - lint-and-spec
-  only:
-    - master
   script:
     - npx sonarqube-scanner
       -Dsonar.login=$SONARCLOUD_TOKEN
-      -Dsonar.projectVersion=$(npm run -s version)-${CI_COMMIT_SHA:0:6}
+      -Dsonar.projectVersion=$(npm run -s version)
+      -Dsonar.branch.name=$CI_COMMIT_REF_NAME
   allow_failure: true
 
 
