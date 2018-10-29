@@ -12,7 +12,8 @@ const genID = (function () {
     return function (prefix: string) {
 
         if (not(prefix in prefixIDs)) {
-            prefixIDs[prefix] = id++;
+            prefixIDs[prefix] = id;
+            id += 1;
         }
 
         return prefixIDs[prefix];
