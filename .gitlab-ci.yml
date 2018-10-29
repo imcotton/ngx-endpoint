@@ -94,6 +94,8 @@ npm-publish:
   dependencies:
     - shrinkwrap-build
   cache: {}
+  variables:
+    NPM_DIST_TAG: next
   script:
     - sh ./dev/publish.sh
   artifacts:
