@@ -1,6 +1,6 @@
 {
   "name": "ngx-endpoint",
-  "version": "0.3.1-0",
+  "version": "0.3.1",
   "description": "Simplify Angular HTTP request API management",
   "author": "Cotton Hou <himcotton@gmail.com>",
   "repository": "github:imcotton/ngx-endpoint",
