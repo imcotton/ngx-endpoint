@@ -103,3 +103,17 @@ npm-publish:
       - npm-shrinkwrap.json
       - ngx-endpoint-*.tgz
 
+
+
+
+
+npm-tag-latest:
+  # only:
+  #   - /^v\/.+$/
+  # except:
+  #   - branches
+  when: manual
+  script:
+    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+    - npm dist-tag add ngx-endpoint@$NPM_LATEST latest
+
