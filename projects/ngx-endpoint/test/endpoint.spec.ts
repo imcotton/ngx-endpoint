@@ -1,4 +1,4 @@
-import { Endpoint, IEndpoint } from './endpoint';
+import { Endpoint, IEndpoint } from '../src/lib/endpoint';
 
 
 

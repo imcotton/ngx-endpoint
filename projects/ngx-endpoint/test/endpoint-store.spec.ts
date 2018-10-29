@@ -1,6 +1,6 @@
-import { EndpointStore, Entry, IEndpointStore } from './endpoint-store';
-import { Endpoint, IEndpoint } from './endpoint';
-import { HashStore, IHashStore } from './utils';
+import { EndpointStore, Entry, IEndpointStore } from '../src/lib/endpoint-store';
+import { Endpoint, IEndpoint } from '../src/lib/endpoint';
+import { HashStore, IHashStore } from '../src/lib/utils';
 
 
 

@@ -1,7 +1,7 @@
 import { TestBed, TestBedStatic } from '@angular/core/testing';
 
-import { NgxEndpointModule } from './ngx-endpoint.module';
-import { BaseEndpointService } from './base-endpoint-service';
+import { NgxEndpointModule } from '../src/lib/ngx-endpoint.module';
+import { BaseEndpointService } from '../src/lib/base-endpoint-service';
 
 
 

@@ -1,4 +1,4 @@
-import { not, join, mergePath, headerGen, HashStore, IHashStore } from './utils';
+import { not, join, mergePath, headerGen, HashStore, IHashStore } from '../src/lib/utils';
 
 
 

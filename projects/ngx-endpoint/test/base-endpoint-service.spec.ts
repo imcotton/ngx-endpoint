@@ -1,4 +1,4 @@
-import { BaseEndpointService } from './base-endpoint-service';
+import { BaseEndpointService } from '../src/lib/base-endpoint-service';
 
 
 
