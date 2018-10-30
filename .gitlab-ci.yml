@@ -52,7 +52,7 @@ raw-build:
 
 
 sonar-scanner:
-  image: node:10-stretch
+  image: node:10-slim
   stage: scan
   dependencies:
     - lint-and-spec
