@@ -94,6 +94,7 @@ npm-tag-latest:
     - /^v\/.+$/
   except:
     - branches
+  cache: {}
   script:
     - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
     - npm dist-tag add ngx-endpoint@$(npm run -s version) latest
