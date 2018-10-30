@@ -3,9 +3,15 @@ image: node:10-alpine
 
 
 
+before_script:
+  - export VERSION_CURRENT=$(npm run -s version)
+
+
+
+
 
 cache:
-  key: "$CI_COMMIT_REF_NAME"
+  key: ${CI_COMMIT_REF_NAME}
   paths:
     - node_modules/
 
@@ -58,9 +64,9 @@ sonar-scanner:
     - lint-and-spec
   script:
     - npx sonarqube-scanner
-      -Dsonar.login=$SONARCLOUD_TOKEN
-      -Dsonar.projectVersion=$(npm run -s version)
-      -Dsonar.branch.name=$CI_COMMIT_REF_NAME
+      -Dsonar.login=${SONARCLOUD_TOKEN}
+      -Dsonar.projectVersion=${VERSION_CURRENT}
+      -Dsonar.branch.name=${CI_COMMIT_REF_NAME}
   allow_failure: true
 
 
@@ -97,6 +103,6 @@ npm-tag-latest:
   cache: {}
   script:
     - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-    - npm dist-tag add ngx-endpoint@$(npm run -s version) latest
+    - npm dist-tag add ngx-endpoint@${VERSION_CURRENT} latest
   when: manual
 

@@ -11,7 +11,7 @@ cp ../../README.md .
 cp ../../CHANGELOG.md .
 
 echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-npm publish --tag=$NPM_DIST_TAG
+npm publish --tag=${NPM_DIST_TAG}
 npm pack -s
 
 mv ngx-endpoint-*.tgz ../../
