@@ -21,8 +21,12 @@ jobs:
 
     steps:
       - checkout
+
+      # alter pkg only, w/o downloading
+      - run: npm i -D --package-lock-only --no-package-lock sonarqube-scanner
+
       - restore_cache: &common_cache_key
-          key: v2-dep-{{ checksum "package.json" }}
+          key: v2.2-dep-{{ checksum "package.json" }}
 
       - run: npm install
 
@@ -78,7 +82,7 @@ jobs:
 
       - run:
           command: >-
-            npx sonarqube-scanner
+            $(npm bin)/sonar-scanner
             -Dsonar.login=${SONARCLOUD_TOKEN}
             -Dsonar.projectVersion=$(npm run -s version)
             -Dsonar.branch.name=${CIRCLE_BRANCH}
