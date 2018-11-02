@@ -1,7 +1,7 @@
 [![npm version](https://badgen.net/npm/v/ngx-endpoint)](https://www.npmjs.com/package/ngx-endpoint)
 [![CircleCI](https://circleci.com/gh/imcotton/ngx-endpoint.svg?style=shield)](https://circleci.com/gh/imcotton/ngx-endpoint)
-[![coverage report](https://gitlab.com/imcotton/ngx-endpoint/badges/master/coverage.svg)](https://gitlab.com/imcotton/ngx-endpoint/-/jobs?scope=finished)
 [![quality gate](https://sonarcloud.io/api/project_badges/measure?project=imcotton_ngx-endpoint&metric=alert_status)](https://sonarcloud.io/dashboard?id=imcotton_ngx-endpoint)
+[![quality gate - coverage](https://sonarcloud.io/api/project_badges/measure?project=imcotton_ngx-endpoint&metric=coverage)](https://sonarcloud.io/component_measures?id=imcotton_ngx-endpoint&metric=coverage)
 
 # ngx-endpoint
 
