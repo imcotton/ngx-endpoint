@@ -1,0 +1,181 @@
+anchor-1: &common_base
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:10-stretch
+
+anchor-2: &common_cache_key
+  key: v2-dep-{{ checksum "package.json" }}
+
+anchor-3: &common_cache_path
+  paths:
+    - node_modules/
+
+anchor-4: &common_attach
+  at: .
+
+anchor-5: &common_all_tags
+  filters:
+    tags:
+      only: /.*/
+
+anchor-6: &common_only_tags_v
+  filters:
+    tags:
+      only: /^v\/.+/
+    branches:
+      ignore: /.*/
+
+
+
+
+
+
+
+
+
+version: 2
+
+jobs:
+
+  install:
+    <<: *common_base
+
+    steps:
+      - checkout
+      - restore_cache: *common_cache_key
+
+      - run: npm install
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./*
+
+      - save_cache:
+          <<: *common_cache_key
+          <<: *common_cache_path
+
+
+
+  lint_and_spec:
+    <<: *common_base
+
+    steps:
+      - attach_workspace: *common_attach
+
+      - run: npm test -- --ci --coverage
+      - run: mkdir -p reports/{jest,telint}
+      - run: cp junit.xml reports/jest/result.xml
+
+      - store_test_results:
+          path: reports
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./coverage/lcov.info
+            - ./junit.xml
+
+
+
+  raw_build:
+    <<: *common_base
+
+    steps:
+      - attach_workspace: *common_attach
+
+      - run: npm run build
+
+
+
+  sonar_scanner:
+    <<: *common_base
+
+    steps:
+      - attach_workspace: *common_attach
+
+      - run:
+          command: >-
+            npx sonarqube-scanner
+            -Dsonar.login=${SONARCLOUD_TOKEN}
+            -Dsonar.projectVersion=$(npm run -s version)
+            -Dsonar.branch.name=${CIRCLE_BRANCH}
+
+
+
+  npm_publish:
+    <<: *common_base
+
+    environment:
+      NPM_DIST_TAG: next
+
+    steps:
+      - checkout
+
+      - run: npm install
+      - run: sh ./dev/publish.sh
+      - run: npm shrinkwrap
+
+      - run: mkdir artifacts
+      - run: mv npm-shrinkwrap.json artifacts/
+      - run: mv ngx-endpoint-*.tgz artifacts/
+
+      - store_artifacts:
+          path: artifacts
+
+
+
+  npm_tag_latest:
+    <<: *common_base
+
+    steps:
+      - checkout
+
+      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+      - run: npm dist-tag add ngx-endpoint@$(npm run -s version) latest
+
+
+
+
+
+workflows:
+  version: 2
+
+  build:
+
+    jobs:
+
+      - install: *common_all_tags
+
+      - raw_build:
+          <<: *common_all_tags
+          requires:
+            - install
+
+      - lint_and_spec:
+          <<: *common_all_tags
+          requires:
+            - install
+
+      - sonar_scanner:
+          <<: *common_all_tags
+          requires:
+            - lint_and_spec
+
+      - npm_publish:
+          <<: *common_only_tags_v
+          requires:
+            - raw_build
+            - lint_and_spec
+
+      - hold:
+          type: approval
+          <<: *common_only_tags_v
+          requires:
+            - npm_publish
+
+      - npm_tag_latest:
+          <<: *common_only_tags_v
+          requires:
+            - hold
+

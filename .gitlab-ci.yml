@@ -57,7 +57,7 @@ raw-build:
 
 
 
-sonar-scanner:
+.sonar-scanner:
   image: node:10-slim
   stage: scan
   dependencies:
@@ -73,7 +73,7 @@ sonar-scanner:
 
 
 
-npm-publish:
+.npm-publish:
   stage: release
   only:
     - /^v\/.+$/
@@ -94,7 +94,7 @@ npm-publish:
 
 
 
-npm-tag-latest:
+.npm-tag-latest:
   stage: release
   only:
     - /^v\/.+$/
