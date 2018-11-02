@@ -64,7 +64,7 @@ jobs:
       - attach_workspace: *common_attach
 
       - run: npm test -- --ci --coverage
-      - run: mkdir -p reports/{jest,telint}
+      - run: mkdir -p reports/{jest,tslint}
       - run: cp junit.xml reports/jest/result.xml
 
       - store_test_results:
