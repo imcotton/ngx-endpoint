@@ -1,48 +1,28 @@
-anchor-1: &common_base
-  working_directory: ~/repo
-  docker:
-    - image: circleci/node:10-stretch
-
-anchor-2: &common_cache_key
-  key: v2-dep-{{ checksum "package.json" }}
-
-anchor-3: &common_cache_path
-  paths:
-    - node_modules/
-
-anchor-4: &common_attach
-  at: .
-
-anchor-5: &common_all_tags
-  filters:
-    tags:
-      only: /.*/
-
-anchor-6: &common_only_tags_v
-  filters:
-    tags:
-      only: /^v\/.+/
-    branches:
-      ignore: /.*/
+version: 2.1
 
 
 
 
 
+executors:
+  base:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10-stretch
 
 
 
 
-version: 2
 
 jobs:
 
   install:
-    <<: *common_base
+    executor: base
 
     steps:
       - checkout
-      - restore_cache: *common_cache_key
+      - restore_cache: &common_cache_key
+          key: v2-dep-{{ checksum "package.json" }}
 
       - run: npm install
 
@@ -53,15 +33,17 @@ jobs:
 
       - save_cache:
           <<: *common_cache_key
-          <<: *common_cache_path
+          paths:
+            - node_modules/
 
 
 
   lint_and_spec:
-    <<: *common_base
+    executor: base
 
     steps:
-      - attach_workspace: *common_attach
+      - attach_workspace: &common_attach
+          at: .
 
       - run: npm test -- --ci --coverage
       - run: mkdir -p reports/{jest,tslint}
@@ -79,7 +61,7 @@ jobs:
 
 
   raw_build:
-    <<: *common_base
+    executor: base
 
     steps:
       - attach_workspace: *common_attach
@@ -89,7 +71,7 @@ jobs:
 
 
   sonar_scanner:
-    <<: *common_base
+    executor: base
 
     steps:
       - attach_workspace: *common_attach
@@ -104,7 +86,7 @@ jobs:
 
 
   npm_publish:
-    <<: *common_base
+    executor: base
 
     environment:
       NPM_DIST_TAG: next
@@ -126,7 +108,7 @@ jobs:
 
 
   npm_tag_latest:
-    <<: *common_base
+    executor: base
 
     steps:
       - checkout
@@ -145,7 +127,10 @@ workflows:
 
     jobs:
 
-      - install: *common_all_tags
+      - install: &common_all_tags
+          filters:
+            tags:
+              only: /.*/
 
       - raw_build:
           <<: *common_all_tags
@@ -163,19 +148,23 @@ workflows:
             - lint_and_spec
 
       - npm_publish:
-          <<: *common_only_tags_v
+          filters: &common_only_tags_v
+            tags:
+              only: /^v\/.+/
+            branches:
+              ignore: /.*/
           requires:
             - raw_build
             - lint_and_spec
 
       - hold:
           type: approval
-          <<: *common_only_tags_v
+          filters: *common_only_tags_v
           requires:
             - npm_publish
 
       - npm_tag_latest:
-          <<: *common_only_tags_v
+          filters: *common_only_tags_v
           requires:
             - hold
 
