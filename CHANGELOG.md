@@ -1,3 +1,13 @@
+<a name="0.3.2"></a>
+## 0.3.2 (2018-11-02)
+
+- upgrade Angular to 7.0.2
+- main CI / CD switching to CircleCI
+
+
+
+
+
 <a name="0.3.1"></a>
 ## 0.3.1 (2018-10-30)
 
