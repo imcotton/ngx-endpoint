@@ -10,6 +10,7 @@
     "lint.fix": "npm run -s lint -- --fix",
     "version": "node -p \"require('./projects/ngx-endpoint/package.json').version\"",
     "e2e": "ng e2e",
+    "sonar-scanner": "sonar-scanner",
     "ng": "ng"
   },
   "husky": {

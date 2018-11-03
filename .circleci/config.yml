@@ -82,7 +82,7 @@ jobs:
 
       - run:
           command: >-
-            $(npm bin)/sonar-scanner
+            npm run sonar-scanner --
             -Dsonar.login=${SONARCLOUD_TOKEN}
             -Dsonar.projectVersion=$(npm run -s version)
             -Dsonar.branch.name=${CIRCLE_BRANCH}
