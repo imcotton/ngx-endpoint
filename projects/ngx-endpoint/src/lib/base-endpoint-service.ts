@@ -17,7 +17,7 @@ export abstract class BaseEndpointService {
 
 
 
-    protected booking (prefix: string,
+    protected booking (this: this, prefix: string,
             {
                 label = '',
             } = {},
@@ -61,7 +61,7 @@ export abstract class BaseEndpointService {
     }
 
 
-    protected abstract onInit (): void;
+    protected abstract onInit (this: this): void;
 
     // tslint:disable-next-line:member-ordering
     private readonly asyncInit = Promise.resolve().then(() => {
