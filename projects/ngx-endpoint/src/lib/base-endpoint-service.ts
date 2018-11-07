@@ -17,11 +17,11 @@ export abstract class BaseEndpointService {
 
 
 
-    protected booking (this: this, prefix: string,
+    protected readonly booking = (prefix: string,
             {
                 label = '',
             } = {},
-    ) {
+    ) => {
 
         const endpoint = Endpoint(prefix, { label });
         const headers = HashStore();
