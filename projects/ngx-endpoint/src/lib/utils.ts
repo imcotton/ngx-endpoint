@@ -38,8 +38,14 @@ export const headerGen = (function () {
 
     // ========================================================================
 
-    function build (type: 'Basic' | 'Bearer', header = 'Authorization') {
-        return function (credentials: string) {
+    function build (authType: 'Basic' | 'Bearer', authHeader = 'Authorization') {
+
+        return function (credentials: string,
+                {
+                    type = authType as string,
+                    header = authHeader as string,
+                } = {},
+        ) {
             return {
                 [ header ]: `${ type } ${ credentials }`,
             };

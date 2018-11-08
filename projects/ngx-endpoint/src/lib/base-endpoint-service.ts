@@ -48,8 +48,8 @@ export abstract class BaseEndpointService {
 
         // ====================================================================
 
-        function setBearer (credentials: string) {
-            headers.add(headerGen.bearer(credentials));
+        function setBearer (credentials: string, type?: string, header?: string) {
+            headers.add(headerGen.bearer(credentials, { type, header }));
         }
 
         // --------------------------------------------------------------------

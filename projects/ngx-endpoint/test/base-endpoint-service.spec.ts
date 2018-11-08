@@ -64,6 +64,18 @@ describe('BaseEndpointService', function () {
 
     });
 
+    test('bearer custom', function () {
+
+        const { api } = service;
+
+        api.auth.OAuth2('foobar', 'token', 'Auth');
+
+        expect(api.headers.clone())
+            .toEqual({ Auth: 'token foobar' })
+        ;
+
+    });
+
     test('basic auth', function () {
 
         const { api } = service;
