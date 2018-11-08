@@ -43,7 +43,7 @@ export const headerGen = (function () {
         return function (credentials: string,
                 {
                     type = authType as string,
-                    header = authHeader as string,
+                    header = authHeader,
                 } = {},
         ) {
             return {
