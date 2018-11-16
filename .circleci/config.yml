@@ -49,6 +49,7 @@ jobs:
       - attach_workspace: &common_attach
           at: .
 
+      - run: npm run lint
       - run: npm test -- --ci --coverage
       - run: mkdir -p reports/{jest,tslint}
       - run: cp junit.xml reports/jest/result.xml
