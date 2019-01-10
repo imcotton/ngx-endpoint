@@ -21,7 +21,7 @@
   "jest": {
     "reporters": [
       "default",
-      "jest-junit"
+      [ "jest-junit", { "output": "junit-jest.xml" } ]
     ]
   },
   "license": "MIT",

@@ -49,10 +49,11 @@ jobs:
       - attach_workspace: &common_attach
           at: .
 
-      - run: npm run lint
+      - run: npm run lint -- --format=junit --out=junit-tslint.xml
       - run: npm test -- --ci --coverage
       - run: mkdir -p reports/{jest,tslint}
-      - run: cp junit.xml reports/jest/result.xml
+      - run: cp junit-jest.xml reports/jest/result.xml
+      - run: cp junit-tslint.xml reports/tslint/result.xml
 
       - store_test_results:
           path: reports
@@ -61,7 +62,7 @@ jobs:
           root: .
           paths:
             - ./coverage/lcov.info
-            - ./junit.xml
+            - ./junit-*.xml
 
 
 

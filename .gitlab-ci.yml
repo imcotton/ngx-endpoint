@@ -33,7 +33,7 @@ lint-and-spec:
   coverage: '/^All files[^|]*\|[^|]*\s+([\d\.]+)/'
   script:
     - npm install
-    - npm run -s lint
+    - npm run lint -- --format=junit --out=junit-tslint.xml
     - npm test -- --ci --coverage
   artifacts:
     when: always
@@ -41,7 +41,7 @@ lint-and-spec:
     paths:
       - coverage/lcov.info
     reports:
-      junit: junit.xml
+      junit: junit-*.xml
 
 
 
