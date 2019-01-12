@@ -23,7 +23,7 @@ jobs:
       - checkout
 
       # alter pkg only, w/o downloading
-      - run: npm i -D --package-lock-only --no-package-lock sonarqube-scanner
+      - run: npm i -D --package-lock-only --no-package-lock sonarqube-scanner jest-sonar-reporter
 
       - restore_cache: &common_cache_key
           key: v2.2-dep-{{ checksum "package.json" }}
@@ -50,7 +50,7 @@ jobs:
           at: .
 
       - run: npm run lint
-      - run: npm test -- --ci --coverage
+      - run: npm test -- --ci --coverage --testResultsProcessor=jest-sonar-reporter
       - run: mkdir -p reports/{jest,tslint}
       - run: cp junit.xml reports/jest/result.xml
 
@@ -62,6 +62,7 @@ jobs:
           paths:
             - ./coverage/lcov.info
             - ./junit.xml
+            - ./test-report.xml
 
 
 
