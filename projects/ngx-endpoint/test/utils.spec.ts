@@ -19,8 +19,10 @@ describe(suitName, function () {
             expect(not(false)).toBe(true);
             expect(not(0)).toBe(true);
             expect(not('')).toBe(true);
-            expect(not(null)).toBe(true);
             expect(not(void 0)).toBe(true);
+
+            // tslint:disable-next-line: no-null-keyword
+            expect(not(null)).toBe(true);
 
         });
 

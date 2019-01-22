@@ -30,7 +30,7 @@ export function EndpointStore () {
 
         const existing = find(endpoint.key);
 
-        if (existing != null) {
+        if (existing !== undefined) {
             throw new Error(`Prefix [ ${ endpoint.prefix } ] already exists.`);
         }
 

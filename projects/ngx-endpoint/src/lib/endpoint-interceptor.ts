@@ -29,7 +29,7 @@ export class EndpointInterceptor implements HttpInterceptor {
 
         const entry = this.endpointService.find(req.url);
 
-        if (entry != null) {
+        if (entry !== undefined) {
             req = req.clone({
                 url: entry.endpoint.calibrate(req.url),
                 setHeaders: entry.headers.clone(),
