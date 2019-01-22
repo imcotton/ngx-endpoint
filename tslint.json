@@ -139,10 +139,7 @@
         }
       }
     ],
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ],
+    "triple-equals": true,
     "typedef-whitespace": [
       true,
       {
